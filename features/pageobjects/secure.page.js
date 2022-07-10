@@ -9,6 +9,10 @@ class SecurePage extends BasePage {
     return $("input[placeholder='Email address']");
   }
 
+  get letterDestinationAfterFilling() {
+    return $("div[data-testid*=address]");
+  }
+
   get letterSubject() {
     return $("input[placeholder='Subject']");
   }
@@ -78,28 +82,34 @@ class SecurePage extends BasePage {
     await this.newMessageButton.click();
   }
 
-  async fillLetter(destination, subject, text) {
+  async fillDestination(destination) {
     await this.letterDestination.waitForDisplayed();
-    await this.letterDestination.click();
-    await browser.keys(destination);
-    await browser.keys("Tab");
-    await browser.keys("Tab");
-    await browser.keys("Tab");
-    await browser.keys("Tab");
-    await browser.keys(subject);
+    await this.letterDestination.setValue(destination);
+  }
+
+  async fillSubject(subject) {
+    await this.letterSubject.setValue(subject);
+    await this.letterSubject.click();
+  }
+
+  async fillTextField(text) {
     await browser.keys("Tab");
     await browser.keys(text);
   }
 
-  async verifyLetterFilledProperly(destination, subject) {
-    await expect(this.letterDestionationFromDraft).toHaveTextContaining(
+  async verifyNewLetterFilledProperly(destination, subject) {
+    await this.letterDestinationAfterFilling.waitForDisplayed();
+    await expect(this.letterDestinationAfterFilling).toHaveTextContaining(
       destination
     );
     await expect(this.letterSubject).toHaveValueContaining(subject);
   }
 
+  async waitingUntilLetterSaved() {
+    await this.letterStatus.waitForExist();
+  }
+
   async verifyLetterIsSaved() {
-    await expect(this.letterStatus).toBeExisting();
     await expect(this.letterStatus).toHaveTextContaining("Saved");
   }
 
@@ -112,10 +122,12 @@ class SecurePage extends BasePage {
     await this.draftsFolderButton.click();
   }
 
-  async verifyLetterInDrafts(text) {
+  async verifyLetterInDrafts(subject) {
     await this.titleOfFirstLetterFromDrafts.waitForDisplayed();
     await expect(this.titleOfFirstLetterFromDrafts).toBeExisting();
-    await expect(this.titleOfFirstLetterFromDrafts).toHaveTextContaining(text);
+    await expect(this.titleOfFirstLetterFromDrafts).toHaveTextContaining(
+      subject
+    );
   }
 
   async openLetterFromDrafts() {
