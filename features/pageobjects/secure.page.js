@@ -165,9 +165,11 @@ class SecurePage extends BasePage {
     await this.sentFolderButton.click();
   }
 
-  async verifyLettersInSent(text) {
+  async verifyLettersInSent(subject) {
     await expect(this.titleOfFirstLetterFromDrafts).toBeExisting();
-    await expect(this.titleOfFirstLetterFromDrafts).toHaveTextContaining(text);
+    await expect(this.titleOfFirstLetterFromDrafts).toHaveTextContaining(
+      subject
+    );
   }
 
   async sellectAllLetters() {
@@ -176,6 +178,9 @@ class SecurePage extends BasePage {
 
   async deleteAllLettersFromSent() {
     await this.deletePermanentlyButton.click();
+  }
+
+  async confirmDeletionAllLettersFromSent() {
     await this.deletePermanentlySubmitButton.waitForDisplayed();
     await this.deletePermanentlySubmitButton.click();
   }
