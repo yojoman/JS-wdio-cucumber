@@ -22,7 +22,7 @@ exports.config = {
   //
   specs: ["./features/**/*.feature"],
   // Patterns to exclude.
-  exclude: ["./features/draft/*.feature"],
+  exclude: ["./features/draft/**/*.feature"],
   //
   // ============
   // Capabilities
