@@ -129,10 +129,10 @@ class SecurePage extends BasePage {
       subject
     );
   }
-  
-  async validatedEmail(str) {
+
+  async validatedEmail(email) {
     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(
-      str
+      email
     );
   }
 

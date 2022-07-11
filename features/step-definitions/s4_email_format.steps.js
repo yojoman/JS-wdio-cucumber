@@ -14,6 +14,6 @@ Then(
   }
 );
 
-Then(/^Validate "(.*)" if it matches defined format$/, async (str) => {
-  expect(await securePage.validatedEmail(str)).to.equal(true);
+Then(/^Validate "(.*)" if it matches defined format$/, async (email) => {
+  expect(await securePage.validatedEmail(email)).to.equal(true);
 });
