@@ -20,10 +20,11 @@ Feature: ProtonMail main functionality
         When User opens 'Drafts' folder
         Then The letter should be present inside the folder with correct "Test letter" subject
 
-    Scenario: 4. Email of receiver matches defined email format
+    Scenario: 4. Email of receiver should be correct
         When User opens the last letter from Drafts
         Then Email fields should contain correct "testinaccountforjspurposes@protonmail.com" and "Test letter" fields
-    
+        And Validate "testinaccountforjspurposes@protonmail.com" if it matches defined format
+
     Scenario: 5. Letters can be sent from Draft folder
         When User clicks 'Send' button
         Then The letter should be sent
