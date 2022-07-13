@@ -2,18 +2,18 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 
-When(/^User clicks 'Send' button$/, async () => {
+When(/^I click on Send button$/, async () => {
   await securePage.sendLetter();
 });
 
-Then(/^The letter should be sent$/, async () => {
+Then(/^I expect Letter is sent$/, async () => {
   await securePage.verifyLetterSent();
 });
 
-When(/^User open 'Drafts' folder$/, async () => {
+When(/^I open Drafts folder again$/, async () => {
   await securePage.openDraftsFolder();
 });
 
-Then(/^The letter shouldn't be present inside the folder$/, async () => {
+Then(/^I expect Letter isn't present inside the folder$/, async () => {
   await securePage.verifyNoLettersInDrafts();
 });

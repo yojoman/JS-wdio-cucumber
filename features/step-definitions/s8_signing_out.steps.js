@@ -4,15 +4,15 @@ const loginPage = new LoginPage();
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 
-When(/^User opens user menu$/, async () => {
+When(/^I open user menu$/, async () => {
   await securePage.openUserMenu();
 });
 
-When(/^Click on 'Sign Out' button$/, async () => {
+When(/^I click on Sign Out button$/, async () => {
   await securePage.signOut();
 });
 
-Then(/^User should be signed out and see "(.*)" title$/, async (title) => {
+Then(/^I expect to be signed out and see "(.*)" title$/, async (title) => {
   await loginPage.verifyTitle(title)
 });
 

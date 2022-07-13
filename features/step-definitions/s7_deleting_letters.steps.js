@@ -2,18 +2,18 @@ const { When, Then } = require("@wdio/cucumber-framework");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 
-When(/^User selects all letters$/, async () => {
+When(/^I select all letters$/, async () => {
   await securePage.sellectAllLetters();
 });
 
-When(/^Clicks 'Delete' button$/, async () => {
+When(/^I click on Delete button$/, async () => {
   await securePage.deleteAllLettersFromSent();
 });
 
-When(/^Confirms deletion$/, async () => {
+When(/^I confirm deletion$/, async () => {
   await securePage.confirmDeletionAllLettersFromSent();
 });
 
-Then(/^No more letters should be present inside 'Sent' folder$/, async () => {
+Then(/^I expect to see no more letters are present inside Sent folder$/, async () => {
   await securePage.verifyLettersNotPresentInSent();
 });
