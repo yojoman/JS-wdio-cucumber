@@ -131,9 +131,7 @@ class SecurePage extends BasePage {
   }
 
   async validatedEmail(email) {
-    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(
-      email
-    );
+    return /^[a-zA-Z0-9]{1,}@[\w-]+\.[a-z]{3}$/i.test(email);
   }
 
   async openLetterFromDrafts() {
