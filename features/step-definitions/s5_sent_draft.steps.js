@@ -1,13 +1,17 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
+const DraftsPage = require("../pageobjects/drafts.page");
+const draftsPage = new DraftsPage();
+const NewLetterPage = require("../pageobjects/new_letter.page");
+const newLetterPage = new NewLetterPage();
 
 When(/^I click on Send button$/, async () => {
-  await securePage.sendLetter();
+  await newLetterPage.sendLetter();
 });
 
 Then(/^I expect Letter is sent$/, async () => {
-  await securePage.verifyLetterSent();
+  await newLetterPage.verifyLetterSent();
 });
 
 When(/^I open Drafts folder again$/, async () => {
@@ -15,5 +19,5 @@ When(/^I open Drafts folder again$/, async () => {
 });
 
 Then(/^I expect Letter isn't present inside the folder$/, async () => {
-  await securePage.verifyNoLettersInDrafts();
+  await draftsPage.verifyNoLettersInDrafts();
 });

@@ -12,16 +12,10 @@ Given(/^I am on the (.*) page of ProtonMail$/, async (page) => {
   await loginPage.open(page);
 });
 
-When(
-  /^I login with "(.*)" and "(.*)" data$/,
-  async (username, password) => {
-    await loginPage.login(username, password);
-  }
-);
+When(/^I login with "(.*)" and "(.*)" data$/, async (username, password) => {
+  await loginPage.login(username, password);
+});
 
-Then(
-  /^I expect to see my mail account with "(.*)" title$/,
-  async (title) => {
-    await securePage.verifyTitle(title);
-  }
-);
+Then(/^I expect to see my mail account with "(.*)" title$/, async (title) => {
+  await securePage.verifyTitle(title);
+});
