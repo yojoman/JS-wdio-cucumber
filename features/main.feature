@@ -43,10 +43,3 @@ Feature: ProtonMail main functionality
         When I open user menu
         And I click on Sign Out button
         Then I expect to be signed out and see "Proton Account" title
-
-
-
-
-
-
-
