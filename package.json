@@ -1,8 +1,8 @@
 {
     "name": "js-wdio-cucumber",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "cucumber automated scenarios",
+    "main": "main.feature",
     "scripts": {
         "test": "wdio run wdio.conf.js",
         "wdio": "wdio run wdio.conf.js"
