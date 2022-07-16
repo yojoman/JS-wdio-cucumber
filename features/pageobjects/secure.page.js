@@ -17,14 +17,14 @@ class SecurePage extends BasePage {
     return $(".//button[contains(@class,'relative')]");
   }
 
-  async verifyTitle(title) {
-    await this.newMessageButton.waitForDisplayed();
-    await expect(browser).toHaveTitleContaining(title);
-  }
+  // async verifyTitle(title) {
+  //   await this.newMessageButton.waitForDisplayed();
+  //   await expect(browser).toHaveTitleContaining(title);
+  // }
 
-  async openNewMessage() {
-    await this.newMessageButton.click();
-  }
+  // async openNewMessage() {
+  //   await this.newMessageButton.click();
+  // }
 
   async openDraftsFolder() {
     await this.draftsFolderButton.waitForDisplayed();

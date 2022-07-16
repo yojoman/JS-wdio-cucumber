@@ -6,7 +6,7 @@ const newLetterPage = new NewLetterPage();
 const DraftsPage = require("../pageobjects/drafts.page");
 const draftsPage = new DraftsPage();
 
-When(/^I wait some time$/, async () => {
+When(/^I wait 3 seconds$/, async () => {
   await newLetterPage.waitingUntilLetterSaved();
 });
 

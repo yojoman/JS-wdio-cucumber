@@ -13,7 +13,7 @@ Feature: ProtonMail main functionality
         Then I expect Letter is filled properly with "testinaccountforjspurposes@protonmail.com" and "Test letter" fields
 
     Scenario: 3. Drafted letter is present inside Drafts folder
-        When I wait some time
+        When I wait 3 seconds
         Then I expect Letter is saved automatically
         When I open Drafts folder
         Then I expect Letter is present inside the folder with correct "Test letter" subject

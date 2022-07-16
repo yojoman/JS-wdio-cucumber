@@ -17,19 +17,19 @@ class LoginPage extends BasePage {
     return $("button[type=submit]");
   }
 
-  async getStaySignInStatus() {
-    if (this.staySignedIn.isSelected()) {
-      this.staySignedIn.click();
-    }
-  }
+  // async getStaySignInStatus() {
+  //   if (this.staySignedIn.isSelected()) {
+  //     this.staySignedIn.click();
+  //   }
+  // }
 
-  async login(username, password) {
-    await this.inputUserPassword.waitForDisplayed();
-    await this.inputUserName.setValue(username);
-    await this.inputUserPassword.setValue(password);
-    await this.getStaySignInStatus();
-    await this.buttonSubmit.click();
-  }
+  // async login(username, password) {
+  //   await this.inputUserPassword.waitForDisplayed();
+  //   await this.inputUserName.setValue(username);
+  //   await this.inputUserPassword.setValue(password);
+  //   await this.staySignedIn.isSelected();
+  //   await this.buttonSubmit.click();
+  // }
 
   async verifyTitle(title) {
     await this.inputUserPassword.waitForDisplayed();

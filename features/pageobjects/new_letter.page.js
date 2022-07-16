@@ -33,28 +33,28 @@ class NewLetterPage extends BasePage {
     return $(".//span[text()='Message sent.']");
   }
 
-  async fillDestination(destination) {
-    await this.letterDestination.waitForDisplayed();
-    await this.letterDestination.setValue(destination);
-  }
+  // async fillDestination(destination) {
+  //   await this.letterDestination.waitForDisplayed();
+  //   await this.letterDestination.setValue(destination);
+  // }
 
-  async fillSubject(subject) {
-    await this.letterSubject.setValue(subject);
-    await this.letterSubject.click();
-  }
+  // async fillSubject(subject) {
+  //   await this.letterSubject.setValue(subject);
+  //   await this.letterSubject.click();
+  // }
 
-  async fillTextField(text) {
-    await browser.keys("Tab");
-    await browser.keys(text);
-  }
+  // async fillTextField(text) {
+  //   await browser.keys("Tab");
+  //   await browser.keys(text);
+  // }
 
-  async verifyNewLetterFilledProperly(destination, subject) {
-    await this.letterDestinationAfterFilling.waitForDisplayed();
-    await expect(this.letterDestinationAfterFilling).toHaveTextContaining(
-      destination
-    );
-    await expect(this.letterSubject).toHaveValueContaining(subject);
-  }
+  // async verifyNewLetterFilledProperly(destination, subject) {
+  //   await this.letterDestinationAfterFilling.waitForDisplayed();
+  //   await expect(this.letterDestinationAfterFilling).toHaveTextContaining(
+  //     destination
+  //   );
+  //   await expect(this.letterSubject).toHaveValueContaining(subject);
+  // }
 
   async waitingUntilLetterSaved() {
     await this.letterStatus.waitForExist();
