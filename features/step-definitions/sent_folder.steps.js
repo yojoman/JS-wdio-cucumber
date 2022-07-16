@@ -5,9 +5,10 @@ const SentPage = require("../pageobjects/sent.page");
 const sentPage = new SentPage();
 
 When(/^I open Sent folder$/, async () => {
-  await securePage.openSentFolder();
+  await securePage.sentFolderButton.click();
 });
 
 Then(/^I expect to see Letter with "(.*)" subject$/, async (subject) => {
-  await sentPage.verifyLettersInSent(subject);
+  await expect(sentPage.titleOfFirstLetterFromDrafts).toBeExisting();
+  await expect(sentPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(subject);
 });

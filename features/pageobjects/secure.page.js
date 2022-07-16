@@ -13,30 +13,8 @@ class SecurePage extends BasePage {
     return $("a[title*=Sent]");
   }
 
-  get userMenu() {
+  get userMenuButton() {
     return $(".//button[contains(@class,'relative')]");
-  }
-
-  // async verifyTitle(title) {
-  //   await this.newMessageButton.waitForDisplayed();
-  //   await expect(browser).toHaveTitleContaining(title);
-  // }
-
-  // async openNewMessage() {
-  //   await this.newMessageButton.click();
-  // }
-
-  async openDraftsFolder() {
-    await this.draftsFolderButton.waitForDisplayed();
-    await this.draftsFolderButton.click();
-  }
-
-  async openSentFolder() {
-    await this.sentFolderButton.click();
-  }
-
-  async openUserMenu() {
-    await this.userMenu.click();
   }
 }
 

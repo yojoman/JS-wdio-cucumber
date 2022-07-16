@@ -7,14 +7,16 @@ const UserMenuPage = require("../pageobjects/user_menu.page");
 const userMenuPage = new UserMenuPage();
 
 When(/^I open user menu$/, async () => {
-  await securePage.openUserMenu();
+  await securePage.userMenuButton.click();
 });
 
 When(/^I click on Sign Out button$/, async () => {
-  await userMenuPage.signOut();
+  await userMenuPage.signOutButton.waitForDisplayed();
+  await userMenuPage.signOutButton.click();
 });
 
 Then(/^I expect to be signed out and see "(.*)" title$/, async (title) => {
+  await loginPage.inputUserPassword.waitForDisplayed();
   await loginPage.verifyTitle(title);
 });
 

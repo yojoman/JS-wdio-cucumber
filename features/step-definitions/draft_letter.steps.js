@@ -6,22 +6,27 @@ const newLetterPage = new NewLetterPage();
 const DraftsPage = require("../pageobjects/drafts.page");
 const draftsPage = new DraftsPage();
 
-When(/^I wait 3 seconds$/, async () => {
-  await newLetterPage.waitingUntilLetterSaved();
+When(/^I wait 5 seconds$/, async () => {
+  await browser.pause(5000);
 });
 
 Then(/^I expect Letter is saved automatically$/, async () => {
-  await newLetterPage.verifyLetterIsSaved();
+  await expect(newLetterPage.letterStatus).toHaveTextContaining("Saved");
 });
 
 When(/^I open Drafts folder$/, async () => {
-  await newLetterPage.closeLetter();
-  await securePage.openDraftsFolder();
+  await newLetterPage.closeLetterButton.click();
+  await securePage.draftsFolderButton.waitForDisplayed();
+  await securePage.draftsFolderButton.click();
 });
 
 Then(
   /^I expect Letter is present inside the folder with correct "(.*)" subject$/,
   async (subject) => {
-    await draftsPage.verifyLetterInDrafts(subject);
+    await draftsPage.titleOfFirstLetterFromDrafts.waitForDisplayed();
+    await expect(draftsPage.titleOfFirstLetterFromDrafts).toBeExisting();
+    await expect(draftsPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(
+      subject
+    );
   }
 );
