@@ -6,8 +6,8 @@ const newLetterPage = new NewLetterPage();
 const DraftsPage = require("../pageobjects/drafts.page");
 const draftsPage = new DraftsPage();
 
-When(/^I wait 5 seconds$/, async () => {
-  await browser.pause(5000);
+When(/^I wait "(.*)" seconds$/, async (sec) => {
+  await browser.pause(`${sec}000`);
 });
 
 Then(/^I expect Letter is saved automatically$/, async () => {
