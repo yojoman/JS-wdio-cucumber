@@ -13,7 +13,9 @@ When(/^I click on Send button$/, async () => {
 
 Then(/^I expect Letter is sent$/, async () => {
   await newLetterPage.notificationSentLetter.waitForDisplayed();
-  await expect(newLetterPage.notificationSentLetter).toHaveTextContaining("Message sent");
+  await expect(newLetterPage.notificationSentLetter).toHaveTextContaining(
+    "Message sent"
+  );
 });
 
 When(/^I open Drafts folder again$/, async () => {
@@ -23,5 +25,7 @@ When(/^I open Drafts folder again$/, async () => {
 
 Then(/^I expect Letter isn't present inside the folder$/, async () => {
   await draftsPage.letterStatusInFolders.waitForDisplayed();
-  await expect(draftsPage.letterStatusInFolders).toHaveTextContaining("No messages found");
+  await expect(draftsPage.letterStatusInFolders).toHaveTextContaining(
+    "No messages found"
+  );
 });

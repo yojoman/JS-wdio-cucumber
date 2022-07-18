@@ -20,6 +20,8 @@ Then(
   async () => {
     await sentPage.letterStatusInFolders.waitForDisplayed();
     await expect(sentPage.letterStatusInFolders).toBeExisting();
-    await expect(sentPage.letterStatusInFolders).toHaveTextContaining("No messages found");
+    await expect(sentPage.letterStatusInFolders).toHaveTextContaining(
+      "No messages found"
+    );
   }
 );

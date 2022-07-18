@@ -27,7 +27,9 @@ Then(
   /^I expect Letter is filled properly with "(.*)" and "(.*)" fields$/,
   async (destination, subject) => {
     await newLetterPage.letterDestinationAfterFilling.waitForDisplayed();
-    await expect(newLetterPage.letterDestinationAfterFilling).toHaveTextContaining(destination);
+    await expect(
+      newLetterPage.letterDestinationAfterFilling
+    ).toHaveTextContaining(destination);
     await expect(newLetterPage.letterSubject).toHaveValueContaining(subject);
   }
 );

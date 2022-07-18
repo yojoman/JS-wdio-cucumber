@@ -10,5 +10,7 @@ When(/^I open Sent folder$/, async () => {
 
 Then(/^I expect to see Letter with "(.*)" subject$/, async (subject) => {
   await expect(sentPage.titleOfFirstLetterFromDrafts).toBeExisting();
-  await expect(sentPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(subject);
+  await expect(sentPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(
+    subject
+  );
 });
