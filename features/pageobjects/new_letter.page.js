@@ -6,7 +6,7 @@ class NewLetterPage extends BasePage {
   }
 
   get letterDestinationAfterFilling() {
-    return $("div[data-testid*=address]");
+    return $(".//span[contains(@class, 'composer-addresses-fakefield-inner')]");
   }
 
   get letterSubject() {

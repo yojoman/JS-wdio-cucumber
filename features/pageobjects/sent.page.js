@@ -1,8 +1,8 @@
 const BasePage = require("./base.page");
 
 class SentPage extends BasePage {
-  get titleOfFirstLetterFromDrafts() {
-    return $("div[style='--index:0;']");
+  get titleOfFirstLetterFromSent() {
+    return $(".//span[@role='heading']");
   }
 
   get letterStatusInFolders() {
