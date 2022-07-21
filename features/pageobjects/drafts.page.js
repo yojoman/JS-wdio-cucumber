@@ -2,7 +2,7 @@ const BasePage = require("./base.page");
 
 class DraftsPage extends BasePage {
   get titleOfFirstLetterFromDrafts() {
-    return $("div[style='--index:0;']");
+    return $(".//span[@role='heading']");
   }
 
   get letterDestionationFromDraft() {
