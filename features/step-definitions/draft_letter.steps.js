@@ -1,4 +1,5 @@
 const { When, Then } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 const NewLetterPage = require("../pageobjects/new_letter.page");
@@ -11,7 +12,12 @@ When(/^I wait "(.*)" seconds$/, async (sec) => {
 });
 
 Then(/^I expect Letter is saved automatically$/, async () => {
-  await expect(newLetterPage.letterStatus).toHaveTextContaining("Saved");
+  expect(await newLetterPage.letterStatus.getText()).to.contains("Saved");
+});
+
+Then(/^I expect date has valid format$/, async () => {
+  const date = await newLetterPage.letterStatus.getText();
+  expect(await newLetterPage.validatedDate(date)).is.equal(true);
 });
 
 When(/^I open Drafts folder$/, async () => {
@@ -24,8 +30,7 @@ Then(
   /^I expect Letter is present inside the folder with correct "(.*)" subject$/,
   async (subject) => {
     await draftsPage.titleOfFirstLetterFromDrafts.waitForDisplayed();
-    await expect(draftsPage.titleOfFirstLetterFromDrafts).toBeExisting();
-    await expect(draftsPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(
+    expect(await draftsPage.titleOfFirstLetterFromDrafts.getText()).to.equal(
       subject
     );
   }
