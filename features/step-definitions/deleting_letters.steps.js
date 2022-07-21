@@ -1,4 +1,5 @@
 const { When, Then } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const SentPage = require("../pageobjects/sent.page");
 const sentPage = new SentPage();
 
@@ -19,8 +20,8 @@ Then(
   /^I expect to see no more letters are present inside Sent folder$/,
   async () => {
     await sentPage.letterStatusInFolders.waitForDisplayed();
-    await expect(sentPage.letterStatusInFolders).toBeExisting();
-    await expect(sentPage.letterStatusInFolders).toHaveTextContaining(
+
+    expect(await sentPage.letterStatusInFolders.getText()).to.equal(
       "No messages found"
     );
   }

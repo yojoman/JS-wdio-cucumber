@@ -1,4 +1,5 @@
 const { When, Then } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 const NewLetterPage = require("../pageobjects/new_letter.page");
@@ -27,9 +28,7 @@ Then(
   /^I expect Letter is filled properly with "(.*)" and "(.*)" fields$/,
   async (destination, subject) => {
     await newLetterPage.letterDestinationAfterFilling.waitForDisplayed();
-    await expect(
-      newLetterPage.letterDestinationAfterFilling
-    ).toHaveTextContaining(destination);
-    await expect(newLetterPage.letterSubject).toHaveValueContaining(subject);
+    expect(await newLetterPage.letterDestinationAfterFilling.getAttribute('title')).to.equal(destination);
+    expect(await newLetterPage.letterSubject.getValue()).to.equal(subject);
   }
 );

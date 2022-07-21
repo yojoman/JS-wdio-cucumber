@@ -1,4 +1,5 @@
 const { When, Then } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const SecurePage = require("../pageobjects/secure.page");
 const securePage = new SecurePage();
 const SentPage = require("../pageobjects/sent.page");
@@ -9,8 +10,6 @@ When(/^I open Sent folder$/, async () => {
 });
 
 Then(/^I expect to see Letter with "(.*)" subject$/, async (subject) => {
-  await expect(sentPage.titleOfFirstLetterFromDrafts).toBeExisting();
-  await expect(sentPage.titleOfFirstLetterFromDrafts).toHaveTextContaining(
-    subject
-  );
+  await sentPage.titleOfFirstLetterFromSent.waitForDisplayed();
+  expect(await sentPage.titleOfFirstLetterFromSent.getText()).to.equal(subject);
 });

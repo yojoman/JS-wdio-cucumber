@@ -1,4 +1,5 @@
 const { When, Then, AfterAll } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const LoginPage = require("../pageobjects/login.page");
 const loginPage = new LoginPage();
 const SecurePage = require("../pageobjects/secure.page");
@@ -17,11 +18,11 @@ When(/^I click on Sign Out button$/, async () => {
 
 Then(/^I expect to be signed out and see "(.*)" title$/, async (title) => {
   await loginPage.inputUserPassword.waitForDisplayed();
-  await loginPage.verifyTitle(title);
+  expect(await browser.getTitle()).to.equal(title);
 });
 
 AfterAll(/^Verify that signing out was successful$/, async () => {
   await browser.refresh();
-  await loginPage.verifyTitle("Proton Account");
+  expect(await browser.getTitle()).to.equal("Proton Account");
   await browser.saveScreenshot("testing result.png");
 });

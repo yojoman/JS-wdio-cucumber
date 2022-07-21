@@ -1,4 +1,5 @@
 const { Before, Given, When, Then } = require("@wdio/cucumber-framework");
+const { expect } = require("chai");
 const LoginPage = require("../pageobjects/login.page");
 const loginPage = new LoginPage();
 const SecurePage = require("../pageobjects/secure.page");
@@ -22,5 +23,5 @@ When(/^I login with "(.*)" and "(.*)" data$/, async (username, password) => {
 
 Then(/^I expect to see my mail account with "(.*)" title$/, async (title) => {
   await securePage.newMessageButton.waitForDisplayed();
-  await expect(browser).toHaveTitleContaining(title);
+  expect(await browser.getTitle()).to.include(title);
 });
