@@ -36,6 +36,10 @@ class NewLetterPage extends BasePage {
   async validatedEmail(email) {
     return /^[a-zA-Z0-9]{1,}@[\w-]+\.[a-z]{3}$/i.test(email);
   }
+
+  async validatedDate(date) {
+    return /^\w{5} \w{2} \d{1,2}:\d{2} \D{2}$/i.test(date);
+  }
 }
 
 module.exports = NewLetterPage;
