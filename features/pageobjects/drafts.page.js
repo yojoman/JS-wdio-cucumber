@@ -5,10 +5,6 @@ class DraftsPage extends BasePage {
     return $(".//span[@role='heading']");
   }
 
-  get letterDestionationFromDraft() {
-    return $(".mr0-5.align-top");
-  }
-
   get letterStatusInFolders() {
     return $(".//h3[text()='No messages found']");
   }
