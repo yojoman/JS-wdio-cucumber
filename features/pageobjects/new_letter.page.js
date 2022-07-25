@@ -6,7 +6,7 @@ class NewLetterPage extends BasePage {
   }
 
   get letterDestinationAfterFilling() {
-    return $("div[data-testid*=address]");
+    return $(".//span[contains(@class, 'composer-addresses-fakefield-inner')]");
   }
 
   get letterSubject() {
@@ -22,7 +22,7 @@ class NewLetterPage extends BasePage {
   }
 
   get letterDestionationFromDraft() {
-    return $(".mr0-5.align-top");
+    return $(".//span[contains(@class,'composer-addresses-fakefield-inner')]");
   }
 
   get sendLetterButton() {
@@ -33,64 +33,13 @@ class NewLetterPage extends BasePage {
     return $(".//span[text()='Message sent.']");
   }
 
-  async fillDestination(destination) {
-    await this.letterDestination.waitForDisplayed();
-    await this.letterDestination.setValue(destination);
-  }
-
-  async fillSubject(subject) {
-    await this.letterSubject.setValue(subject);
-    await this.letterSubject.click();
-  }
-
-  async fillTextField(text) {
-    await browser.keys("Tab");
-    await browser.keys(text);
-  }
-
-  async verifyNewLetterFilledProperly(destination, subject) {
-    await this.letterDestinationAfterFilling.waitForDisplayed();
-    await expect(this.letterDestinationAfterFilling).toHaveTextContaining(
-      destination
-    );
-    await expect(this.letterSubject).toHaveValueContaining(subject);
-  }
-
-  async waitingUntilLetterSaved() {
-    await this.letterStatus.waitForExist();
-  }
-
-  async verifyLetterIsSaved() {
-    await expect(this.letterStatus).toHaveTextContaining("Saved");
-  }
-
-  async closeLetter() {
-    await this.closeLetterButton.click();
-  }
-
-  async letterContainsCorrectInfo(destination, subject) {
-    await this.letterSubject.waitForDisplayed();
-    await expect(this.letterDestionationFromDraft).toHaveTextContaining(
-      destination
-    );
-    await expect(this.letterSubject).toHaveValueContaining(subject);
-  }
-
-  async sendLetter() {
-    await this.sendLetterButton.waitForDisplayed();
-    await this.sendLetterButton.click();
-  }
-
-  async verifyLetterSent() {
-    await this.notificationSentLetter.waitForDisplayed();
-    await expect(this.notificationSentLetter).toHaveTextContaining(
-      "Message sent"
-    );
-  }
-
   async validatedEmail(email) {
     return /^[a-zA-Z0-9]{1,}@[\w-]+\.[a-z]{3}$/i.test(email);
   }
+
+  async validatedDate(date) {
+    return /^\w{5} \w{2} \d{1,2}:\d{2} \D{2}$/i.test(date);
+  }
 }
 
-module.exports = NewLetterPage;
+module.exports = new NewLetterPage();
