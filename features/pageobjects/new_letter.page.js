@@ -42,4 +42,4 @@ class NewLetterPage extends BasePage {
   }
 }
 
-module.exports = NewLetterPage;
+module.exports = new NewLetterPage();

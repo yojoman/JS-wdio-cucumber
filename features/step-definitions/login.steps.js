@@ -1,9 +1,7 @@
 const { Before, Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const LoginPage = require("../pageobjects/login.page");
-const loginPage = new LoginPage();
-const SecurePage = require("../pageobjects/secure.page");
-const securePage = new SecurePage();
+const loginPage = require("../pageobjects/login.page");
+const securePage = require("../pageobjects/secure.page");
 
 Before(/^Mazimize browser window$/, async () => {
   await browser.maximizeWindow();

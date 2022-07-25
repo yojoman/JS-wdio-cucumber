@@ -10,4 +10,4 @@ class DraftsPage extends BasePage {
   }
 }
 
-module.exports = DraftsPage;
+module.exports = new DraftsPage();

@@ -18,4 +18,4 @@ class SecurePage extends BasePage {
   }
 }
 
-module.exports = SecurePage;
+module.exports = new SecurePage();

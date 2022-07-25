@@ -18,4 +18,4 @@ class LoginPage extends BasePage {
   }
 }
 
-module.exports = LoginPage;
+module.exports = new LoginPage();

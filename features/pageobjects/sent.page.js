@@ -26,4 +26,4 @@ class SentPage extends BasePage {
   }
 }
 
-module.exports = SentPage;
+module.exports = new SentPage();

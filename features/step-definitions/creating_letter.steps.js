@@ -1,9 +1,7 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const SecurePage = require("../pageobjects/secure.page");
-const securePage = new SecurePage();
-const NewLetterPage = require("../pageobjects/new_letter.page");
-const newLetterPage = new NewLetterPage();
+const securePage = require("../pageobjects/secure.page");
+const newLetterPage = require("../pageobjects/new_letter.page");
 
 When(/^I click on New message button$/, async () => {
   await securePage.newMessageButton.click();

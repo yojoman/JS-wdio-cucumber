@@ -1,9 +1,7 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const SecurePage = require("../pageobjects/secure.page");
-const securePage = new SecurePage();
-const SentPage = require("../pageobjects/sent.page");
-const sentPage = new SentPage();
+const securePage = require("../pageobjects/secure.page");
+const sentPage = require("../pageobjects/sent.page");
 
 When(/^I open Sent folder$/, async () => {
   await securePage.sentFolderButton.click();

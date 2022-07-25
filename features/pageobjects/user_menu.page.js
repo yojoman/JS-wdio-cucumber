@@ -6,4 +6,4 @@ class UserMenuPage extends BasePage {
   }
 }
 
-module.exports = UserMenuPage;
+module.exports = new UserMenuPage();

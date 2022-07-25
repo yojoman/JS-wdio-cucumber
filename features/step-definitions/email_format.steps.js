@@ -1,9 +1,7 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const DraftsPage = require("../pageobjects/drafts.page");
-const draftsPage = new DraftsPage();
-const NewLetterPage = require("../pageobjects/new_letter.page");
-const newLetterPage = new NewLetterPage();
+const draftsPage = require("../pageobjects/drafts.page");
+const newLetterPage = require("../pageobjects/new_letter.page");
 
 When(/^I open the last letter from Drafts$/, async () => {
   await draftsPage.titleOfFirstLetterFromDrafts.click();
