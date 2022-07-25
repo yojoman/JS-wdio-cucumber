@@ -1,21 +1,18 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const SecurePage = require("../pageobjects/secure.page");
-const securePage = new SecurePage();
-const NewLetterPage = require("../pageobjects/new_letter.page");
-const newLetterPage = new NewLetterPage();
-const DraftsPage = require("../pageobjects/drafts.page");
-const draftsPage = new DraftsPage();
+const securePage = require("../pageobjects/secure.page");
+const newLetterPage = require("../pageobjects/new_letter.page");
+const draftsPage = require("../pageobjects/drafts.page");
 
 When(/^I wait "(.*)" seconds$/, async (sec) => {
-  await browser.pause(`${sec}000`);
+  await browser.pause(sec * 1000);
 });
 
-Then(/^I expect Letter is saved automatically$/, async () => {
-  expect(await newLetterPage.letterStatus.getText()).to.contains("Saved");
+Then(/^I expect "(.*)" text is displayed on Letter$/, async (text) => {
+  expect(await newLetterPage.letterStatus.getText()).to.contains(text);
 });
 
-Then(/^I expect date has valid format$/, async () => {
+Then(/^I expect saved Letter date has HH:MM XM format$/, async () => {
   const date = await newLetterPage.letterStatus.getText();
   expect(await newLetterPage.validatedDate(date)).is.equal(true);
 });

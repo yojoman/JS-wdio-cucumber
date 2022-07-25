@@ -1,7 +1,6 @@
 const { When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const SentPage = require("../pageobjects/sent.page");
-const sentPage = new SentPage();
+const sentPage = require("../pageobjects/sent.page");
 
 When(/^I select all letters$/, async () => {
   await sentPage.selectAllCheckBox.click();
@@ -17,12 +16,9 @@ When(/^I confirm deletion$/, async () => {
 });
 
 Then(
-  /^I expect to see no more letters are present inside Sent folder$/,
-  async () => {
+  /^I expect "(.*)" text is displayed inside Sent folder$/,
+  async (text) => {
     await sentPage.letterStatusInFolders.waitForDisplayed();
-
-    expect(await sentPage.letterStatusInFolders.getText()).to.equal(
-      "No messages found"
-    );
+    expect(await sentPage.letterStatusInFolders.getText()).to.equal(text);
   }
 );
