@@ -1,11 +1,8 @@
 const { When, Then, AfterAll } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const LoginPage = require("../pageobjects/login.page");
-const loginPage = new LoginPage();
-const SecurePage = require("../pageobjects/secure.page");
-const securePage = new SecurePage();
-const UserMenuPage = require("../pageobjects/user_menu.page");
-const userMenuPage = new UserMenuPage();
+const loginPage = require("../pageobjects/login.page");
+const securePage = require("../pageobjects/secure.page");
+const userMenuPage = require("../pageobjects/user_menu.page");
 
 When(/^I open user menu$/, async () => {
   await securePage.userMenuButton.click();
@@ -21,8 +18,10 @@ Then(/^I expect to be signed out and see "(.*)" title$/, async (title) => {
   expect(await browser.getTitle()).to.equal(title);
 });
 
-AfterAll(/^Verify that signing out was successful$/, async () => {
+Then(/^I refresh page$/, async () => {
   await browser.refresh();
-  expect(await browser.getTitle()).to.equal("Proton Account");
+});
+
+AfterAll(/^Make a screenshot$/, async () => {
   await browser.saveScreenshot("testing result.png");
 });
