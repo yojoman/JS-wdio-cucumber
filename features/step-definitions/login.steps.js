@@ -1,7 +1,7 @@
 const { Before, Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
 const loginPage = require("../pageobjects/login.page");
-const securePage = require("../pageobjects/secure.page");
+const newLetterPage = require("../pageobjects/new_letter.page");
 
 Before(/^Mazimize browser window$/, async () => {
   await browser.maximizeWindow();
@@ -20,6 +20,6 @@ When(/^I login with "(.*)" and "(.*)" data$/, async (username, password) => {
 });
 
 Then(/^I expect to see my mail account with "(.*)" title$/, async (title) => {
-  await securePage.newMessageButton.waitForDisplayed();
+  await newLetterPage.newMessageButton.waitForDisplayed();
   expect(await browser.getTitle()).to.include(title);
 });
