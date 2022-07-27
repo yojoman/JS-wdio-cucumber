@@ -1,12 +1,16 @@
 const BasePage = require("./base.page");
 
 class DraftsPage extends BasePage {
+  get draftsFolderButton() {
+    return $("a[title*=Drafts]");
+  }
+
   get titleOfFirstLetterFromDrafts() {
     return $(".//span[@role='heading']");
   }
 
-  get letterStatusInFolders() {
-    return $(".//h3[text()='No messages found']");
+  letterStatusInFolders(text) {
+    return $(`.//h3[text()='${text}']`);
   }
 }
 

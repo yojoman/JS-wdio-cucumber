@@ -1,6 +1,10 @@
 const BasePage = require("./base.page");
 
 class NewLetterPage extends BasePage {
+  get newMessageButton() {
+    return $(".//button[text()='New message']");
+  }
+
   get letterDestination() {
     return $("input[placeholder='Email address']");
   }
@@ -29,8 +33,8 @@ class NewLetterPage extends BasePage {
     return $(".//span[text()='Send']");
   }
 
-  get notificationSentLetter() {
-    return $(".//span[text()='Message sent.']");
+  notificationMessage(text) {
+    return $(`.//span[text()='${text}']`);
   }
 
   async validatedEmail(email) {
