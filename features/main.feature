@@ -1,5 +1,7 @@
+@main
 Feature: ProtonMail main functionality
 
+    @login
     Scenario: 1. Logging into ProtonMail website
         Given I am on the login page of ProtonMail
         When I login with "testinaccountforjspurposes" and "SuperSecretPassword!" data

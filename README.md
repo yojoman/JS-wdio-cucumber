@@ -10,4 +10,5 @@ Installing:
 3. npm install chai
 
 Running:
-use 'npm test' command.
+use "npm test" command.
+use "npm test -- --cucumberOpts.tagExpression='@login'" - to run particular tag
