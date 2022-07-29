@@ -15,4 +15,4 @@ Running:
 1. use "npm test" command.
 2. use "npm test -- --cucumberOpts.tagExpression='@login'" - to run particular tag.
 3. use "allure generate ./reports/allure-results --clean -o ./reports/allure-report" - to generate allure report.
-4. use "aallure open ./reports/allure-report" - to open allure report.
+4. use "allure open ./reports/allure-report" - to open allure report.
