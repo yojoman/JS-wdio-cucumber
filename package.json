@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/yojoman/JS-wdio-cucumber#readme",
     "devDependencies": {
+        "@wdio/allure-reporter": "^7.20.7",
         "@wdio/cli": "^7.20.5",
         "@wdio/cucumber-framework": "^7.20.3",
         "@wdio/local-runner": "^7.20.5",
