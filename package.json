@@ -27,6 +27,7 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "dependencies": {
+        "allure-commandline": "^2.18.1",
         "chai": "^4.3.6"
     }
 }
