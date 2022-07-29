@@ -22,5 +22,5 @@ Then(/^I refresh page$/, async () => {
 });
 
 AfterAll(/^Make a screenshot$/, async () => {
-  await browser.saveScreenshot("testing result.png");
+  await browser.saveScreenshot("reports/testing result.png");
 });
